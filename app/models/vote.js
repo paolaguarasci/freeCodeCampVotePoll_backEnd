@@ -6,10 +6,8 @@ var Schema = mongoose.Schema;
 
 var VoteSchema = new Schema({
     name: String,
-    option: {
-        opt: Array,
-        val: Array
-    }
+    opt: Array,
+    val: Array
 });
 
 module.exports = mongoose.model('Vote', VoteSchema);
