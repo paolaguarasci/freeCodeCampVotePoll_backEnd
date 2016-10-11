@@ -9,11 +9,14 @@
   "author": "Paola Guarasci",
   "license": "MIT",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "cookie-parser": "^1.4.3",
     "lodash": "^4.16.4",
     "method-override": "^2.3.6",
     "mongoose": "^4.6.3",
     "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-http": "^0.3.0",
     "path": "^0.12.7",
     "serve-favicon": "^2.3.0"
   }

@@ -13,6 +13,7 @@ exports.postVotes = function(req, res) {
     vote.name = req.body.name;
     vote.opt = req.body.opt.split('\n');
     vote.val = [];
+    vote.userID = req.user._id;
 
     // Save the beer and check for errors
     vote.save(function(err) {
@@ -29,7 +30,9 @@ exports.postVotes = function(req, res) {
 // Create endpoint /api/beers for GET
 exports.getVotes = function(req, res) {
     // Use the Beer model to find all beer
-    Vote.find(function(err, votes) {
+    Vote.find({
+        userID: req.user._id
+    }, function(err, votes) {
         if (err)
             res.send(err);
 
@@ -40,7 +43,10 @@ exports.getVotes = function(req, res) {
 // Create endpoint /api/beers/:beer_id for GET
 exports.getVote = function(req, res) {
     // Use the Beer model to find a specific beer
-    Vote.findById(req.params.vote_id, function(err, vote) {
+    Vote.findById({
+        userID: req.user._id,
+        _id: req.params.vote_id
+    }, req.params.vote_id, function(err, vote) {
         if (err)
             res.send(err);
 
@@ -51,7 +57,10 @@ exports.getVote = function(req, res) {
 // Create endpoint /api/beers/:beer_id for PUT
 exports.putVote = function(req, res) {
     // Use the Beer model to find a specific beer
-    Vote.findById(req.params.vote_id, function(err, vote) {
+    Vote.findById({
+        userID: req.user._id,
+        _id: req.params.vote_id
+    }, function(err, vote) {
         if (err)
             res.send(err);
 
@@ -73,7 +82,10 @@ exports.putVote = function(req, res) {
 // Create endpoint /api/beers/:beer_id for DELETE
 exports.deleteVote = function(req, res) {
     // Use the Beer model to find a specific beer and remove it
-    Vote.findByIdAndRemove(req.params.vote_id, function(err) {
+    Vote.findByIdAndRemove({
+        userID: req.user._id,
+        _id: req.params.vote_id
+    }, req.params.vote_id, function(err) {
         if (err)
             res.send(err);
 
