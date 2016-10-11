@@ -1,0 +1,16 @@
+{
+  "name": "back-end-vote-poll",
+  "version": "0.0.1",
+  "description": "Server side vote poll app for FreeCodeCamp",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paola Guarasci",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.16.4",
+    "method-override": "^2.3.6",
+    "mongoose": "^4.6.3"
+  }
+}
